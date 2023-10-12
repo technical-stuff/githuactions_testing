@@ -21,6 +21,9 @@ jobs:
         echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
         echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
     
+    - name: Print GitHub Workspace Directory
+      run: pwd
+      
     - name: Change working directory to Terraform code
       run: cd Test
       
