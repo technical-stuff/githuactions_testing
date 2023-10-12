@@ -25,13 +25,9 @@ jobs:
       run: pwd
       
     - name: Change working directory to Terraform code
-      run: cd /home/runner/work/githuactions_testing/githuactions_testing/Test
-      
-    - name: Initialize Terraform
-      run: terraform init
-
-    - name: Validate Terraform configuration
-      run: terraform validate
-      
-    - name: Apply Terraform changes
-      run: terraform apply -auto-approve
+      run: |
+        cd /home/runner/work/githuactions_testing/githuactions_testing/Test
+        pwd
+        terraform init
+        terraform validate
+        terraform apply -auto-approve
