@@ -22,10 +22,13 @@ jobs:
         echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
     
     - name: Change working directory to Terraform code
-      run: cd Test
+      with:
+        path: Test
 
     - name: Initialize Terraform
-      run: terraform init
+      with:
+        path: Test
+        run: terraform init
 
     - name: Validate Terraform configuration
       run: terraform validate
