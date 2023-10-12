@@ -26,9 +26,6 @@ jobs:
 
     - name: Validate Terraform configuration
       run: terraform validate
-    
-    - name: plan Terraform configuration
-      run: terraform plan
       
     - name: Apply Terraform changes
       run: terraform apply -auto-approve
