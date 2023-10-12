@@ -25,7 +25,7 @@ jobs:
       run: pwd
       
     - name: Change working directory to Terraform code
-      run: cd Test
+      run: cd /home/runner/work/githuactions_testing/githuactions_testing/Test
       
     - name: Initialize Terraform
       run: terraform init
