@@ -12,18 +12,18 @@ resource "aws_launch_template" "example" {
       volume_type = "gp2"
     }
   }
-  user_data = <<-EOF
+  user_data = base64encode(<<-EOF
               #!/bin/bash
               apt-get update
               apt-get install -y git
               mkdir /home/ubuntu/actions-runner
-              wget /home/ubuntu/actions-runner/https://github.com/actions/runner/releases/download/v2.278.1/actions-runner-linux-x64-2.278.1.tar.gz
-              tar xzf /home/ubuntu/actions-runner/actions-runner-linux-x64-2.278.1.tar.gz
               cd /home/ubuntu/actions-runner
+              wget https://github.com/actions/runner/releases/download/v2.278.1/actions-runner-linux-x64-2.278.1.tar.gz
+              tar xzf actions-runner-linux-x64-2.278.1.tar.gz
               ./config.cmd --url https://github.com/technical-stuff/githuactions_testing --token A7XF7R4FDLGLNCMF72PC2WLFFD7KC
               ./svc.sh install
               ./svc.sh status
-              EOF
+              EOF)
 }
 
 
