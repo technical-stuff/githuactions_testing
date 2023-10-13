@@ -12,5 +12,5 @@ resource "aws_launch_template" "example" {
       volume_type = "gp2"
     }
   }
-  user_data = "${file("userdata_script.sh")}"
+  user_data = filebase64("${path.module}/bin/userdata_script.sh")
 }
