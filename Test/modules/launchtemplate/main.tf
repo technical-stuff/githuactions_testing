@@ -12,7 +12,7 @@ resource "aws_launch_template" "example" {
       volume_type = "gp2"
     }
   }
-  user_data = <<-EOF
+  user_data = base64encode(<<-EOF
     #!/bin/bash
     apt-get update
     apt-get install -y git
@@ -23,5 +23,5 @@ resource "aws_launch_template" "example" {
     ./config.sh --url https://github.com/technical-stuff/githuactions_testing --token A7XF7R4FDLGLNCMF72PC2WLFFD7KC
     ./svc.sh install
     ./svc.sh start
-  EOF
+  EOF)
 }
