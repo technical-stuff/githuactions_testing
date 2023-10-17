@@ -16,7 +16,7 @@ sudo chown ubuntu:ubuntu /home/ubuntu/actions-runner/*
 PAT=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
 token=$(curl -s -XPOST -H "authorization: token $PAT" "https://github.com/technical-stuff/githuactions_testing/actions/runners/registration-token" | jq -r .token)
 #token=$(curl -s -XPOST -H "authorization: token $PAT" https://github.com/technical-stuff/githuactions_testing/actions/runners/registration-token)
-./config.sh --url https://github.com/technical-stuff/githuactions_testing --token A7XF7R3QT7NQTYFKQSICRQ3FFZKH6 --name "my-runner-$(hostname)" --work _work
+./config.sh --url https://github.com/technical-stuff/githuactions_testing --token $token --name "my-runner-$(hostname)" --work _work
 sudo ./svc.sh install
 sudo ./svc.sh start
 # #!/bin/bash
