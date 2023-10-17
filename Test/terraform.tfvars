@@ -8,7 +8,7 @@ vpc_security_group_ids      = "sg-073744a647fcc8042"
 
 
 autoscaling_name = "example-auto-scaling-group"
-min_size = 1
-max_size = 1
-desired_capacity = 1
+min_size = 2
+max_size = 3
+desired_capacity = 2
 vpc_zone_identifier = "subnet-00146fe97b752d38b"
