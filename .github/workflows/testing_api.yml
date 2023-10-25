@@ -1,0 +1,43 @@
+name: matrix12
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-status:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Run GraphQL Query
+        env:
+          GITHUB_PAT: ${{ secrets.ACCESS }}
+        run: |
+          API_URL="https://api.github.com/graphql"
+          QUERY_FILE="query.graphql"
+          curl -X POST \
+            -H "Authorization: bearer $GITHUB_PAT" \
+            -d @"$QUERY_FILE" \
+            $API_URL
+  job1:
+    runs-on: ubuntu-latest
+    needs: update-status
+
+    steps:
+      - name: Parallel Job 1
+        run: |
+          # Add your steps for parallel job 1
+          echo "This is parallel job 1"
+  job2:
+    runs-on: ubuntu-latest
+    needs: update-status
+
+    steps:
+      - name: Parallel Job 2
+        run: |
+          # Add your steps for parallel job 2
+          echo "This is parallel job 2"
